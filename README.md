@@ -1,73 +1,121 @@
-# React + TypeScript + Vite
+# Math Invaders 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun, educational space-invaders-style math game for young children to practice their math facts!
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Multiple Operations**: Addition, subtraction, multiplication, and division
+- **Practice Modes**:
+  - Random numbers: Practice with all numbers in the range
+  - Specific number: Focus on a particular number (e.g., practice multiplying by 5)
+- **Responsive Design**: Works on both desktop and mobile devices
+- **Progressive Difficulty**: Game speed increases as you level up
+- **Kid-Friendly UI**: Colorful, engaging interface with emojis
 
-## React Compiler
+## Number Ranges
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Addition & Subtraction**: 0-10
+- **Multiplication & Division**: 0-12
 
-## Expanding the ESLint configuration
+## How to Play
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Choose your operation type (addition, subtraction, multiplication, or division)
+2. Select practice mode (random or specific number)
+3. Shoot the falling answers that match the math problem displayed at the top
+4. Earn points for correct answers
+5. Avoid shooting wrong answers or letting correct answers fall!
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Controls
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+**Desktop:**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Arrow keys (← →) to move
+- Spacebar to shoot
+
+**Mobile/Tablet:**
+
+- Touch and drag to move your ship
+- Tap to shoot
+- Use on-screen buttons for easy control
+
+## Development
+
+### Install Dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Run Tests
+
+```bash
+npm test        # Watch mode
+npm run test:run # Single run
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── MainMenu.tsx        # Game menu for selecting options
+│   ├── MainMenu.css
+│   ├── GameCanvas.tsx      # Main game rendering component
+│   └── GameCanvas.css
+├── hooks/
+│   └── useGameEngine.ts    # Core game logic and state management
+├── types/
+│   └── game.ts             # TypeScript type definitions
+├── utils/
+│   ├── mathUtils.ts        # Math problem generation utilities
+│   └── mathUtils.test.ts   # Tests for math utilities
+└── test/
+    └── setup.ts            # Test configuration
+```
+
+## Testing
+
+The project includes comprehensive tests for:
+
+- Math problem generation
+- Answer validation
+- Problem formatting
+- Component rendering
+
+Tests are automatically run in CI/CD pipeline via GitHub Actions.
+
+## Pre-commit Hooks
+
+The project uses Husky to run ESLint on staged files before commits. This ensures code quality and prevents lint errors from being committed.
+
+## Technologies
+
+- **React 19** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Vitest** - Testing framework
+- **React Testing Library** - Component testing
+- **ESLint** - Code linting
+- **Husky** - Git hooks
+
+## License
+
+MIT
